@@ -1,0 +1,11 @@
+{
+    "train_samples": 3920,
+    "val_samples": 700,
+    "test_samples": 1680,
+    "train_speakers": 392,
+    "val_speakers": 70,
+    "test_speakers": 168,
+    "train_hours": 3.3484040624999976,
+    "val_hours": 0.594116840277778,
+    "test_hours": 1.4407370138888886
+}

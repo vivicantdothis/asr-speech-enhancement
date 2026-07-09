@@ -1,0 +1,11 @@
+dataset:
+
+  root_dir: "TIMIT"
+
+  sample_rate: 16000
+
+  train_ratio: 0.70
+
+  val_ratio: 0.15
+
+  test_ratio: 0.15

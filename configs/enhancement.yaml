@@ -1,0 +1,7 @@
+enhancement:
+
+  model: "fullsubnet"
+
+  checkpoint_path: "checkpoints/fullsubnet.pth"
+
+  batch_size: 1

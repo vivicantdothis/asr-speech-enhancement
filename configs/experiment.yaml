@@ -1,0 +1,15 @@
+experiment:
+
+  name: "timit_speech_enhancement"
+
+  seed: 42
+
+  output_dir: "outputs"
+
+  save_plots: true
+
+  save_features: true
+
+  save_audio: true
+
+  device: "cuda"

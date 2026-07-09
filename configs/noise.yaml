@@ -1,0 +1,14 @@
+noise:
+
+  sample_rate: 16000
+
+  snr_db: 10
+
+  random_seed: 42
+
+  enabled_types:
+    - white
+    - babble
+
+  babble:
+    speakers_per_mix: 5

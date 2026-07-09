@@ -1,0 +1,15 @@
+numpy
+pandas
+librosa
+soundfile
+matplotlib
+scipy
+
+torch
+torchaudio
+pyyaml
+tqdm
+pesq
+pystoi
+scikit-image
+torchmetrics
