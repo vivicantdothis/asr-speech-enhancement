@@ -1,7 +1,10 @@
-from src.enhancement.cnn import CNNEnhancer
+from src.enhancement.classical.cnn import CNNEnhancer
+from src.enhancement.pretrained.deepfilternet import DeepFilterNetEnhancer
 
-def build_enhancer(model_name,checkpoint=None,device="cpu"):
+_ENHANCERS={"cnn":CNNEnhancer, "deepfilternet":DeepFilterNetEnhancer,}
+
+def build_enhancer(model_name,**kwargs):
     model_name=model_name.lower()
-    if model_name=="cnn":
-        return CNNEnhancer(checkpoint=checkpoint,device=device,)
-    raise ValueError(f"Unknown enhancement model:{model_name}")
+    if model_name not in _ENHANCERS:
+        raise ValueError(f"Unknown enhancer:{model_name}")
+    return _ENHANCERS[model_name](*kwargs)

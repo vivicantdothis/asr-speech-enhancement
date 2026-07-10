@@ -13,6 +13,9 @@ class AudioIO:
     def save_audio(filepath,waveform,sample_rate=16000):
         filepath=Path(filepath)
         filepath.parent.mkdir(parents=True,exist_ok=True)
+        if hasattr(waveform,"detach"):
+            waveform=waveform.detach().cpu().numpy()
+        waveform=np.asarray(waveform,dtype=np.float32)
         waveform=AudioIO.normalize_peak(waveform)
         sf.write(filepath,waveform,sample_rate)
     @staticmethod
