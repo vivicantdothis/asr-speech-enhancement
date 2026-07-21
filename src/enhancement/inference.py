@@ -1,6 +1,7 @@
 import torch
 import numpy as np
 from src.features.feature_extractor import FeatureExtractor
+from src.enhancement.pipeline import EnhancementPipeline
 
 class EnhancementInference:
     def __init__(self,enhancer):

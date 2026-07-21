@@ -8,26 +8,35 @@ from src.enhancement.pipeline import EnhancementPipeline
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument("--model", default="deepfilternet",help="Enhancement model",)
+    parser.add_argument("--noise",required=True,choices=["white","babble"],help="Noise type",)
+    parser.add_argument("--snr",required=True,help="snr level")
+    parser.add_argument("--split",default="test",choices=["train","val","test"],)
+    parser.add_argument("--overwrite",action="store_true",help="Overwrite existing enhanced files",)
     args=parser.parse_args()
     start=time.time()
     MODEL_NAME=args.model
-    input_root=Path("data/clean/test")
-    output_root=Path("outputs")/MODEL_NAME
+    snr=args.snr
+    input_root=Path("data")/"noisy"/args.noise/args.split
+    output_root=Path("outputs")/MODEL_NAME/args.noise/snr/args.split
     enhancer=build_enhancer(MODEL_NAME)
     pipeline=EnhancementPipeline(enhancer)
     wav_files=sorted(input_root.rglob("*.wav"))
     print("="*50)
     print(f"Model:{MODEL_NAME}")
+    print(f"Noise:{args.noise}")
+    print(f"Split:{args.split}")
     print(f"Input:{input_root}")
     print(f"Output:{output_root}")
     print(f"Files: {len(wav_files)} .wav files.")
     print("="*50)
     success=0
+    skipped=0
     failed=[]
     for wav in tqdm(wav_files):
         relative=wav.relative_to(input_root)
         output_file=(output_root/relative.parent/f"{relative.stem}_enhanced.wav")
-        if output_file.exists():
+        if output_file.exists() and not args.overwrite:
+            skipped +=1
             continue
         try:
             pipeline.enhance_file(wav,output_file,)
@@ -37,19 +46,15 @@ def main():
     elapsed=time.time()-start
     print("="*50)
     print("\nBatch enhancement completed.")
-    print(f"Succesfull:{success}")
+    print(f"Succesful:{success}")
+    print(f"Skipped:{skipped}")
     print(f"Failed:{len(failed)}")
-    if failed:
-        print("\nFailed files:")
-        for wav,err in failed:
-            print(f"{wav}")
-            print(err)
+    print(f"Runtime:{elapsed/60:.2f} min")
     print(f"Outputs saved to: {output_root}")
-    print(f"Runtime: {elapsed/60:.2f} minutes")
     print("="*50)
 
-    log = Path("logs")/f"{MODEL_NAME}_failures.txt"
     if failed:
+        log=Path("logs")/f"{MODEL_NAME}_{args.noise}_{args.split}_enhancement_failures.txt"
         with open(log,"w") as f:
             for wav,err in failed:
                 f.write(f"{wav}\n")

@@ -39,6 +39,8 @@ outputs/
 # Datasets
 # ----------------------------
 datasets/TIMIT/
+third_party/
+pretrained_models/
 
 # ----------------------------
 # Model files
