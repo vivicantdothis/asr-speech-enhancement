@@ -1,0 +1,7 @@
+Speech Enhancement Evaluation
+==================================================
+
+Files:13440
+Models:['cnn', 'deepfilternet', 'fullsubnet', 'spectral', 'wiener']
+Noise:['babble', 'white']
+SNR:['babble', 'white']

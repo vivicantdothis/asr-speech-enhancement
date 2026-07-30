@@ -1,0 +1,9 @@
+noise,model,SNR,SI_SDR,STOI
+babble,fullsubnet,13.3218,12.3178,0.9108
+babble,spectral,11.4953,10.5573,0.8797
+babble,wiener,9.2011,8.2996,0.8754
+white,cnn,16.7698,15.8377,0.9353
+white,deepfilternet,0.1749,-16.9849,0.4146
+white,fullsubnet,16.864,15.9389,0.9336
+white,spectral,14.5923,13.8258,0.9084
+white,wiener,10.0344,9.1521,0.897

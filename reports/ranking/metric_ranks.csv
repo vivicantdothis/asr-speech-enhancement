@@ -1,0 +1,6 @@
+model,SNR_Rank,SI_SDR_Rank,STOI_Rank
+cnn,1,1,1
+deepfilternet,5,5,5
+fullsubnet,2,2,2
+spectral,3,3,3
+wiener,4,4,4

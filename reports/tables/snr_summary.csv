@@ -1,0 +1,6 @@
+snr,model,SNR,SI_SDR,STOI
+10dB,cnn,16.7698,15.8377,0.9353
+10dB,deepfilternet,0.1749,-16.9849,0.4146
+10dB,fullsubnet,15.0929,14.1283,0.9222
+10dB,spectral,13.0438,12.1916,0.894
+10dB,wiener,9.6178,8.7259,0.8862
