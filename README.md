@@ -19,19 +19,19 @@ The evaluation metrics include Signal-to-Noise Ratio (SNR), Scale-Invariant Sign
 After evaluation and comparison of the results, it was found that the neural network-based models significantly outperformed the classical methods in terms of both objective metrics and subjective listening tests. The proposed and implemented U-Net CNN outperformed FullSubNet (and DeepFilterNet), while the classical enhancement techniques had comparable performance. The classical enhancement techniques, however, have a far lower computational cost and are still relevant methods of investigation
 
 <figure align="center">
-  <img src="./reports/plots/mean_SI_SDR" width="500">
+  <img src="./reports/plots/mean_SI_SDR.png" width="500">
   <figcaption>Figure 1: The average SI-SDR values recorded by each enhancement method. FullSubNet recorded the best SI-SDR value of 15.9389 followed by the U-Net CNN with a value of 15.8377.</figcaption>
 </figure>
 
 
 <figure align="center">
-  <img src="./reports/plots/mean_SNR" width="500">
+  <img src="./reports/plots/mean_SNR.png" width="500">
   <figcaption>Figure 2: The average SNR values recorded by each enhancement method. FullSubNet recorded the best SNR value of 16.864 followed by the U-Net CNN with a value of 16.7698.</figcaption>
 </figure>
 
 
 <figure align="center">
-  <img src="./reports/plots/mean_STOI" width="500">
+  <img src="./reports/plots/mean_STOI.png" width="500">
   <figcaption>Figure 3: The average STOI values recorded by each enhancement method. The implemented U-Net CNN recorded the best STOI value of 0.9353 followed by FullSubNet with a value of 0.9336.</figcaption>
 </figure>
 
