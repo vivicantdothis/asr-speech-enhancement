@@ -18,7 +18,7 @@ def main():
     snr=args.snr
     input_root=Path("data")/"noisy"/args.noise/args.split
     output_root=Path("outputs")/MODEL_NAME/args.noise/snr/args.split
-    enhancer=build_enhancer(MODEL_NAME)
+    enhancer=build_enhancer(MODEL_NAME,noise_type=args.noise,)
     pipeline=EnhancementPipeline(enhancer)
     wav_files=sorted(input_root.rglob("*.wav"))
     print("="*50)
@@ -40,6 +40,12 @@ def main():
             continue
         try:
             pipeline.enhance_file(wav,output_file,)
+            if MODEL_NAME.lower()=="cnn":
+                try:
+                    pipeline.export_debug(wav,output_file,)
+                except Exception as e:
+                    print(f"Spectrogram export failed:{relative}")
+                    print(e)
             success += 1
         except Exception as e:
             failed.append((wav,str(e)))
